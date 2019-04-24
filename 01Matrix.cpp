@@ -6,6 +6,7 @@
 #include <vector>
 using namespace std;
 
+//从右上角向下或左查找
 bool Find(vector<vector<int> > array, int target)
 {
     bool found = false;
