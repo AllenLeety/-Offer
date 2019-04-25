@@ -63,7 +63,7 @@ void PreOrderDev(TreeNode *root)
 
     TreeNode *node = root;
         //开始遍历整个二叉树
-    while(node != NULL || nstack.empty() != true){
+    while(node != NULL || !nstack.empty()){
             //输出当前子树的根结点，然后递归至最左
         while(node != NULL){
             cout << node->val << " ";
@@ -73,7 +73,7 @@ void PreOrderDev(TreeNode *root)
 
             //此时循环结束时，当前栈顶结点已经是最左结点
             //此时递归开始返回，开始出栈，并输出结点的右结点
-        if(nstack.empty() != true){
+        if(!nstack.empty()){
             node = nstack.top();
             nstack.pop();
             node = node->right;
@@ -92,7 +92,7 @@ void InOrderDev(TreeNode *root)
     TreeNode *node = root;
 
         //开始遍历整个二叉树
-    while(node != NULL || nstack.empty() != true){
+    while(node != NULL || !nstack.empty()){
             //不输出当前结点，但是递归直至当前根结点node的最左端
         while(node != NULL){
             nstack.push(node);
@@ -100,7 +100,7 @@ void InOrderDev(TreeNode *root)
         }
 
             //此时栈顶元素是当前最左元素，应该被输出
-        if(nstack.empty() != true){
+        if(!nstack.empty()){
             node = nstack.top();
             cout << node->val << " ";
             nstack.pop();
@@ -128,7 +128,7 @@ void InOrderDev(TreeNode *root)
     TreeNode *pre = NULL;   //前一次访问的结点
     nstack.push(root);
 
-    while(nstack.empty() != true)
+    while(!nstack.empty())
     {
         cur = nstack.top();
 
@@ -161,7 +161,7 @@ void PostOrderDev(TreeNode *root)
     stack<TreeNode*> nstack;
     TreeNode *node = root;
 
-    while(node != NULL || nstack.empty() != true){
+    while(node != NULL || !nstack.empty()){
         //不输出当前元素，便利直至最左结点
         while(node != NULL){
             node->isFirst = 1;  //当前结点首次被访问
@@ -169,7 +169,7 @@ void PostOrderDev(TreeNode *root)
             node = node->left;
         }
 
-        if(nstack.empty() != true){
+        if(!nstack.empty()){
             node = nstack.top();
             nstack.pop();
 
