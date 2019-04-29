@@ -20,7 +20,7 @@ public:
 
 private:
     void insert(int key, TreeNode* root);
-    TreeNode* serach(int kay, TreeNode* root);
+    TreeNode* serach(int key, TreeNode* root);
     void destory_tree(TreeNode* root);
     void preOrder_print(TreeNode* root);
     TreeNode* root;
