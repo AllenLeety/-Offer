@@ -8,7 +8,8 @@ using namespace std;
 
 struct RandomListNode{
     int label;
-    struct RandomListNode *next, *random; 
+    struct RandomListNode *next, *random;
+//    RandomListNode(int x):label(x), next(NULL), random(NULL){} 
 };
 
 class Solution{
@@ -46,18 +47,17 @@ public:
     RandomListNode* ReconnectNode(RandomListNode* pHead)
     {
         RandomListNode* pNode = pHead;
-        RandomListNode* pCloneHead = NULL;
+        RandomListNode* pCloneHead = pNode->next;
         RandomListNode* pCloneNode = NULL;
-        if(pNode != NULL){
-            pCloneHead = pCloneNode = pNode->next;
-            pNode->next = pCloneNode->next;
-            pNode = pNode->next;
-        }
+        
         while(pNode != NULL){
-            pCloneNode->next = pNode->next;
-            pCloneNode = pCloneNode->next;
+            pCloneNode = pNode->next;
             pNode->next = pCloneNode->next;
             pNode = pNode->next;
+
+            if(pNode != NULL){
+                pCloneNode->next = pNode->next;
+            }
         }
         return pCloneHead;
     }
