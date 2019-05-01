@@ -15,7 +15,6 @@ void CombinationRecursion(char* str, int m, vector<char> res)
 {
     assert(str != NULL);
     if(m == 0){
-        static int num = 1;
         vector<char>::iterator iter = res.begin();
         for(; iter != res.end(); iter++){
             cout << *iter;
