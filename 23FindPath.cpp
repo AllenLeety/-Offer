@@ -36,8 +36,7 @@ public:
         currentSum += root->val;
         path.push_back(root->val);
         ///
-        if(currentSum == expectNumber
-        && ((root->left == NULL && root->right == NULL)))
+        if(currentSum == expectNumber && ((root->left == NULL && root->right == NULL)))
         {
             for(int i = 0; i < path.size( ); i++)
             {
