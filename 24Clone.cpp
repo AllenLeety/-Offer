@@ -4,6 +4,8 @@
 （注意，输出结果中请不要返回参数中的节点引用，否则判题程序会直接返回空）
 */
 #include <iostream>
+#include <map>
+#include <vector>
 using namespace std;
 
 struct RandomListNode{
@@ -72,6 +74,32 @@ public:
         return ReconnectNode(pHead);
     }
 };
+
+RandomListNode* copyRandomList(RandomListNode* head){
+	std::map<RandomListNode*, int> nodeMap;
+	std::vector<RandomListNode*> nodeVec;
+	RandomListNode* ptr = head;
+	int i = 0;
+	while(ptr){
+		nodeVec.push_back(new RandomListNode(ptr->label));
+		nodeMap[ptr] = i;
+		ptr = ptr->next;
+		i++;
+	}
+	nodeVec.push_back(0);
+	i = 0;
+	ptr = head;
+	while(ptr){
+		nodeVec[i]->next = nodeVec[i+1];
+		if(ptr->random){
+			int id = nodeMap[ptr->random];
+			nodeVec[i]->random = nodeVec[id]; 
+		}
+		ptr = ptr->next;
+		i++;
+	}
+	return nodeVec[0];
+}
 
 int main()
 {
